@@ -1,3 +1,46 @@
+# third version
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+# The CYF hotel did not have a DB but if I have one I see the structure below.
+# Then go to github and create the secrets https://github.com/softacoder/AWS-cyf-hotel/settings/secrets/actions
+    # services:
+    #   postgres:
+    #     image: postgres:latest
+    #     env:
+    #       POSTGRES_USER: postgres
+    #       POSTGRES_PASSWORD: password
+    #       POSTGRES_DB: dbnamefullstackprojectassessment
+    #     ports:
+    #       - 5432:5432
+    #     options: >-
+    #       --health-cmd pg_isready
+    #       --health-interval 10s
+    #       --health-timeout 5s
+    #       --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Tests
+        run: npm test
+
+
 # second version
 on: [push]
   
