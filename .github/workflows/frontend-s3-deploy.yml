@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
 # 
+£
 # The CYF hotel DB.
 # Then go to github and create the secrets https://github.com/softacoder/AWS-cyf-hotel/settings/secrets/actions
     # services:
