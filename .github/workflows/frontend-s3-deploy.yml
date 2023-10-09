@@ -8,9 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-
-# The CYF hotel DB.
-# Then go to github and create the secrets https://github.com/softacoder/AWS-cyf-hotel/settings/secrets/actions
+    # The CYF hotel DB.
+    # Then go to github and create the secrets https://github.com/softacoder/AWS-cyf-hotel/settings/secrets/actions
     # services:
     #   postgres:
     #     image: postgres:latest
@@ -40,51 +39,48 @@ jobs:
 
       - name: Run Tests
         run: npm test
-
-
 # second version
-on: [push]
-  
-    branches:
-      - main
+# on: [push]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+#     branches:
+#       - main
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        run: npm ci
+#       - name: Setup NodeJS
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 18
 
-      - name: Set up AWS CLI
-        run: |
-          echo "[default]
-          aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" > ~/.aws/credentials
-          
-      - name: Install AWS CLI
-        run: |
-          curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install
-          aws --version
-          
-      - name: Deploy to S3
-        run: |
-          aws s3 sync ./build/ s3://your-s3-bucket-name/
+#       - name: Install Dependencies
+#         run: npm ci
 
+#       - name: Set up AWS CLI
+#         run: |
+#           echo "[default]
+#           aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" > ~/.aws/credentials
+
+#       - name: Install AWS CLI
+#         run: |
+#           curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#           unzip awscliv2.zip
+#           sudo ./aws/install
+#           aws --version
+
+#       - name: Deploy to S3
+#         run: |
+#           aws s3 sync ./build/ s3://your-s3-bucket-name/
 
 # first version
 # on: [push]
-  
+
 #     branches:
 #       - main
 
@@ -101,14 +97,14 @@ jobs:
 #           echo "[default]
 #           aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
 #           aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" > ~/.aws/credentials
-          
+
 #       - name: Install AWS CLI
 #         run: |
 #           curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 #           unzip awscliv2.zip
 #           sudo ./aws/install
 #           aws --version
-          
+
 #       - name: Deploy to S3
 #         run: |
 #           aws s3 sync ./build/ s3://your-s3-bucket-name/
