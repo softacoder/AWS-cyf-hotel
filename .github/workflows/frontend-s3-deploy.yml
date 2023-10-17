@@ -1,4 +1,9 @@
 #fourth version
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
