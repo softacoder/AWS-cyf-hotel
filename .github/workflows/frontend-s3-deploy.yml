@@ -1,4 +1,4 @@
-#fourth version
+# fifth version
 name: Deploy Frontend
 
 on:
@@ -33,25 +33,60 @@ jobs:
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
           docker push softa67/awshotelfrontend:1.0
 
-      - name: EC2 SCP > Copy / to /aws-hotel-server/
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "*"
-          target: "aws-hotel-server/"
+#fourth version
+# name: Deploy Frontend
 
-      - name: EC2 SSH > Pull and Start Docker Container for Frontend
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /aws-hotel-server
-            docker pull softa67/awshotelfrontend:1.0
-            docker run -d -p 80:3000 --name awshotelfrontend softa67/awshotelfrontend:1.0
+# on:
+#   push:
+#     branches:
+#       - master
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 18
+
+#       - name: Install Dependencies
+#         run: |
+#           npm ci
+
+#       - name: Build Docker Image
+#         run: |
+#           docker build -t awshotelfrontend .
+#           docker tag awshotelfrontend:latest softa67/awshotelfrontend:1.0
+
+#       - name: Push Docker Image to Docker Hub
+#         run: |
+#           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+#           docker push softa67/awshotelfrontend:1.0
+
+#       - name: EC2 SCP > Copy / to /aws-hotel-server/
+#         uses: appleboy/scp-action@v0.1.4
+#         with:
+#           host: ${{ secrets.EC2_HOST }}
+#           username: ${{ secrets.SSH_USERNAME }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           source: "*"
+#           target: "aws-hotel-server/"
+
+#       - name: EC2 SSH > Pull and Start Docker Container for Frontend
+#         uses: appleboy/ssh-action@v1.0.0
+#         with:
+#           host: ${{ secrets.EC2_HOST }}
+#           username: ${{ secrets.SSH_USERNAME }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           script: |
+#             cd /aws-hotel-server
+#             docker pull softa67/awshotelfrontend:1.0
+#             docker run -d -p 80:3000 --name awshotelfrontend softa67/awshotelfrontend:1.0
 
 # third version
 # on:
