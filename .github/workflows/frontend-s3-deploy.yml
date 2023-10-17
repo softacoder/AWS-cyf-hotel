@@ -1,4 +1,6 @@
 #fourth version
+name: Deploy Frontend
+
 on:
   push:
     branches:
@@ -40,7 +42,7 @@ jobs:
           source: "*"
           target: "aws-hotel-server/"
 
-      - name: EC2 SSH > Pull and Start Docker Container
+      - name: EC2 SSH > Pull and Start Docker Container for Frontend
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
