@@ -1,0 +1,14 @@
+# Use the official PostgreSQL image as the base image
+FROM postgres:15-alpine
+
+# Define the arguments being passed to the Docker Run Command
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+
+# Set the local environment variables using the provided arguments
+ENV POSTGRES_USER=$POSTGRES_USER
+ENV POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+
+# Copy the customerprofile.sql file to initialize the database
+COPY customerprofile.sql /docker-entrypoint-initdb.d/
+

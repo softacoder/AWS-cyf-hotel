@@ -1,0 +1,21 @@
+{
+  "label": "Run PostgreSQL Container",
+  "type": "shell",
+  "command": "docker",
+  "args": [
+    "run",
+    "--env",
+    "POSTGRES_USER=$POSTGRES_USER",
+    "--env",
+    "POSTGRES_PASSWORD=$POSTGRES_PASSWORD",
+    "--name",
+    "cyf-hotel-postgres-container",
+    "-d",
+    "awscyfhotel"
+  ],
+  "group": {
+    "kind": "build",
+    "isDefault": true
+  },
+  "dependsOn": "Build PostgreSQL Image"
+}
