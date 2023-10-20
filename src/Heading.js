@@ -3,7 +3,7 @@ import React from "react";
 const Heading = () => {
   return (
     <header className="App-header">
-      <h1 className="logo-title">CYF Hotel</h1>
+      <h1 className="logo-title">Jan's Hotel</h1>
       <img className="logo-hotel" src="../images/hotel.png" alt="Hotel Logo" />
     </header>
   );
