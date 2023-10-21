@@ -26,12 +26,12 @@ jobs:
       - name: Build Docker Image
         run: |
           docker build -t awshotelfrontend .
-          docker tag awshotelfrontend:latest softa67/awshotelfrontend:1.0
+          docker tag awshotelfrontend:latest softa67/awshotelfrontend:latest
 
       - name: Push Docker Image to Docker Hub
         run: |
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-          docker push softa67/awshotelfrontend:1.0
+          docker push softa67/awshotelfrontend:latest
 
       # - name: EC2 SCP > Copy / to /aws-hotel-server/
       #   uses: appleboy/scp-action@v0.1.4
@@ -50,7 +50,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /aws-hotel-server
-            docker pull softa67/awshotelfrontend:1.0
+            docker pull softa67/awshotelfrontend:latest
             docker run -d -p 80:3000 --name awshotelfrontend softa67/awshotelfrontend:1.0
             docker stop $(docker ps -a -q)
             docker run --rm -d -p 80:3000 softa67/awshotelbackend:latest
