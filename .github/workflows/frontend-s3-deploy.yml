@@ -53,7 +53,7 @@ jobs:
             docker pull softa67/awshotelfrontend:latest
             docker run -d -p 80:3000 --name awshotelfrontend softa67/awshotelfrontend:1.0
             docker stop $(docker ps -a -q)
-            docker run --rm -d -p 80:3000 softa67/awshotelbackend:latest
+            docker run --rm -d -p 80:3000 softa67/awshotelfrontend:latest
 
 #
 # third version
