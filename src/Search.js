@@ -41,6 +41,7 @@ const Search = (props) => {
 
 export default Search;
 
+//
 // It is a React component called Search. It imports the React library and the SearchButton component from a file named
 // "SearchButton.js". It also imports the useState hook from React. The Search component is a functional component defined
 // as an arrow function that takes in props as a parameter. It returns JSX representing the structure and content of
