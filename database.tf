@@ -1,17 +1,3 @@
-# version 1
-provider "aws" {
-  region = "eu-west-2"  
-}
-
-resource "aws_db_instance" "cyf_hotel_db" {
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "postgres"
-  engine_version       = "13.4"
-  instance_class       = "db.t2.micro"
-  name                 = "cyfhotel"
-  username             = "db_user"
-  password             = "your_password"
-  parameter_group_name = "default.postgres13"
-  skip_final_snapshot  = true
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:290c6ac40c6109d4a9253bd5f496c25108c87dec60dc39fed00689a4394c46e5
+size 3151
